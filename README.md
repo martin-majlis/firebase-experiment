@@ -25,4 +25,9 @@
 
 ## Authentication
 
+- https://github.com/firebase/functions-samples/tree/main/authenticated-json-api
 - https://blog.logrocket.com/user-authentication-firebase-react-apps/
+
+# Useful Links
+
+- https://github.com/firebase/functions-samples/
