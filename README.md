@@ -1,6 +1,7 @@
 # Firebase Experiment
 
-- https://fir-experiment-e213a.web.app/
+- frontend: https://fir-experiment-e213a.web.app/
+- backend: https://us-central1-fir-experiment-e213a.cloudfunctions.net/app
 
 ## Hosting
 
@@ -21,3 +22,7 @@
   - `firebase init functions`
 - https://blog.logrocket.com/rest-api-firebase-cloud-functions-typescript-firestore/
   - https://github.com/ebenezerdon/journal-rest-api
+
+## Authentication
+
+- https://blog.logrocket.com/user-authentication-firebase-react-apps/

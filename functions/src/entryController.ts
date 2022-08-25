@@ -1,14 +1,9 @@
-import { Response } from "express";
+import { Request, Response } from "express";
 import { db } from "./config/firebase";
 
 type EntryType = {
   title: string;
   text: string;
-};
-
-type Request = {
-  body: EntryType;
-  params: { entryId: string };
 };
 
 type Error = {
