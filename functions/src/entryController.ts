@@ -1,5 +1,12 @@
 import { Request, Response } from "express";
-import { db } from "./config/firebase";
+import { db, admin } from "./config/firebase";
+import { log, warn } from "firebase-functions/lib/logger";
+
+declare module "express-serve-static-core" {
+  interface Request {
+    user?: number;
+  }
+}
 
 type EntryType = {
   title: string;
@@ -19,6 +26,8 @@ const addEntry = async (req: Request, res: Response) => {
       title,
       text,
     };
+
+    log("Add entry: ", entryObject);
 
     await entry.set(entryObject);
 
@@ -51,6 +60,8 @@ const getEntry = async (req: Request, res: Response) => {
   try {
     const entry = db.collection("entries").doc(entryId);
     const currentData = (await entry.get()).data() || {};
+
+    log("Get entry: ", currentData);
 
     return res.status(200).json({
       status: "success",
@@ -116,4 +127,35 @@ const deleteEntry = async (req: Request, res: Response) => {
   }
 };
 
-export { addEntry, getAllEntries, updateEntry, deleteEntry, getEntry };
+// Express middleware that validates Firebase ID Tokens passed in the Authorization HTTP header.
+// The Firebase ID token needs to be passed as a Bearer token in the Authorization HTTP header like this:
+// `Authorization: Bearer <Firebase ID Token>`.
+// when decoded successfully, the ID Token content will be added as `req.user`.
+const authenticate = async (req: Request, res: Response, next: any) => {
+  if (
+    !req.headers.authorization ||
+    !req.headers.authorization.startsWith("Bearer ")
+  ) {
+    res.status(403).send("Unauthorized");
+    return;
+  }
+  const idToken = req.headers.authorization.split("Bearer ")[1];
+  try {
+    const decodedIdToken = await admin.auth().verifyIdToken(idToken);
+    req.user = decodedIdToken;
+    next();
+    return;
+  } catch (e) {
+    res.status(403).send("Unauthorized");
+    return;
+  }
+};
+
+export {
+  addEntry,
+  getAllEntries,
+  updateEntry,
+  deleteEntry,
+  getEntry,
+  authenticate,
+};

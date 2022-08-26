@@ -31,3 +31,15 @@
 # Useful Links
 
 - https://github.com/firebase/functions-samples/
+
+# API
+
+- Get all entries:
+  - `curl -X GET http://localhost:5001/fir-experiment-e213a/us-central1/app/entries | jq '.'`
+- Insert entry:
+  - `curl -X POST -H "Content-Type: application/json" -d '{"title": "title-1", "text": "text-1"}' http://localhost:5001/fir-experiment-e213a/us-central1/app/entries | jq '.'`
+  - `curl -X POST -H "Content-Type: application/json" -d '{"title": "title-4", "text": "text-4"}' http://localhost:5001/fir-experiment-e213a/us-central1/app/entries | jq '.'`
+- Get entry:
+  - `curl -X GET http://localhost:5001/fir-experiment-e213a/us-central1/app/entries/2o9QK5CNMu27Z01hrD8u | jq '.'`
+- Update entry:
+  - `curl -X PATCH -H "Content-Type: application/json" -d '{"title": "text-10", "text": "text-10"}' http://localhost:5001/fir-experiment-e213a/us-central1/app/entries/2o9QK5CNMu27Z01hrD8u`

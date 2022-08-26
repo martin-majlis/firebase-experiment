@@ -5,6 +5,8 @@ import {
   getAllEntries,
   updateEntry,
   deleteEntry,
+  getEntry,
+  authenticate,
 } from "./entryController";
 
 const app: Express = express();
@@ -14,6 +16,7 @@ app.get("/", (req: Request, res: Response) =>
 );
 app.post("/entries", addEntry);
 app.get("/entries", getAllEntries);
+app.get("/entries/:entryId", getEntry);
 app.patch("/entries/:entryId", updateEntry);
 app.delete("/entries/:entryId", deleteEntry);
 
