@@ -1,4 +1,4 @@
-import { Routes, Route, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getEntry, Entry } from "./firebase";
 import React, { useEffect, useState } from "react";
 

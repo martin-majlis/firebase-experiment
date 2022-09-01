@@ -1,6 +1,6 @@
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getEntries, EntryWithId } from "./firebase";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function EntriesList() {
   const [entries, setEntries] = useState<EntryWithId[]>([]);

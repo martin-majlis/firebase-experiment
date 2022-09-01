@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
@@ -13,7 +12,7 @@ import Home from "./Home";
 import EntriesList from "./EntriesList";
 
 function App() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user /*, loading, error*/] = useAuthState(auth);
   return (
     <div className="App">
       <Router>

@@ -1,13 +1,5 @@
-import React from "react";
 import logo from "./logo.svg";
 import "./Home.css";
-
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Login from "./Login";
-import EntryDetail from "./EntryDetail";
-import NoMatch from "./NoMatch";
-import Entries from "./Entries";
-import EntryAdd from "./EntryAdd";
 
 function Home() {
   return (

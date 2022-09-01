@@ -1,5 +1,5 @@
-import { Routes, Route, useParams, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { addEntryWithValue } from "./firebase";
 
 function EntryAdd() {
