@@ -28,7 +28,7 @@ function EntriesList() {
         </thead>
         <tbody>
           {entries.map((entry) => (
-            <tr>
+            <tr key={entry.id}>
               <td>
                 <Link to={entry.id}>{entry.id}</Link>
               </td>
