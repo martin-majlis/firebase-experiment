@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  connectAuthEmulator,
 } from "firebase/auth";
 import {
   doc,
@@ -21,7 +22,20 @@ import {
   DocumentData,
   QueryDocumentSnapshot,
   SnapshotOptions,
+  connectFirestoreEmulator,
 } from "firebase/firestore";
+
+// import nodeConfig from 'config';
+
+// interface Config {
+//   /** Whether use emulator or not. */
+//   useEmulator: boolean;
+
+// }
+
+// const config: Config = {
+//   useEmulator: nodeConfig.get<boolean>('useEmulator')
+// };
 
 const firebaseConfig = {
   apiKey: "AIzaSyCoXGd5el9MP0g5JK7SdLJEKdz_1_YolZQ",
@@ -40,6 +54,14 @@ type Error = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+
+if (window.location.host.startsWith("localhost")) {
+  console.log("Using Emulator");
+  // connect to emulators
+  connectFirestoreEmulator(db, "localhost", 8080);
+  connectAuthEmulator(auth, "http://localhost:9099");
+}
+
 // const analytics = getAnalytics(app);
 
 const googleProvider = new GoogleAuthProvider();

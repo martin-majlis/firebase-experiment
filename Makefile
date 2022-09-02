@@ -8,7 +8,10 @@ backend-build:
 backend-deploy:
 	firebase deploy --only functions
 
-backend-emulator:
+backend-emulator-init:
+	firebase init emulators
+
+backend-emulator-start:
 	firebase emulators:start
 
 frontend-run:
