@@ -1,6 +1,7 @@
 // The Firebase Admin SDK to access Firestore.
-const admin = require("firebase-admin");
+import admin from "firebase-admin";
 admin.initializeApp();
 
 const db = admin.firestore();
-export { admin, db };
+const storage = admin.storage();
+export { admin, db, storage };

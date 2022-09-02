@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { db, admin } from "./config/firebase";
-import { log, warn } from "firebase-functions/lib/logger";
+import { log } from "firebase-functions/lib/logger";
+import { DecodedIdToken } from "firebase-admin/auth";
 
 declare module "express-serve-static-core" {
   interface Request {
-    user?: number;
+    user?: DecodedIdToken;
   }
 }
 
